@@ -2,9 +2,10 @@ import random as ran
 
 game_running = True
 ran_number = ran.randint(1, 10)
-print(ran_number)
+attempt = 3
 
 while game_running:
+    print(attempt, "attempts left")
     try:
         player_guess = int(input("Guess the number: "))
     except ValueError:
@@ -15,5 +16,10 @@ while game_running:
          print("You guessed it right!")
          game_running = False
     else:
-        print("Try again")
-        continue
+        if attempt == 0:
+            print("Game over")
+            game_running = False
+        else:
+            print("Try again")
+            attempt -= 1
+            
