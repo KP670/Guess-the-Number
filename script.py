@@ -1,6 +1,6 @@
 import random as ran
 import music as mu
-
+from os import system
 
 
 def difficulty_setting():
@@ -86,11 +86,12 @@ def game():
     # Two loops; outer loop starts the game, inner loop goes throught the attempts
     while game_running:
         while attempt > 0:
+            system('cls')
             if attempt != 3:
                 print("----------------------------------------------------------------")
                 print("Try again")
 
-            if attempt == 1: print("Last attempt")
+            elif attempt == 1: print("Last attempt")
             else: print(attempt, "attempts left")
 
             # Checks if player's guess is valid (a valid number) 
@@ -123,12 +124,18 @@ def game():
                 
             else:
                 mu.incorrect_aud()
+                if player_guess > ran_number:
+                    print("Your guess is too high!")
+                elif player_guess < ran_number:
+                    print("Your guess is too low!")
+                input('Press enter to continue: ')
                 attempt -= 1
-        print("The answer is", ran_number)
         break
     
     # When attempts drains, run through this code, gives player another chance to play again
     if attempt == 0:
+        system('cls')
+        print("The answer is", ran_number)
         print("Gameover")
         mu.lose_aud()
         return play_again()
