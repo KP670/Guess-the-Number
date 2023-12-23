@@ -22,3 +22,4 @@ output/game/sounds/invalid.wav
 output/game/sounds/lose.wav
 output/game/sounds/startgame.wav
 output/game/sounds/win.wav
+__pycache__/

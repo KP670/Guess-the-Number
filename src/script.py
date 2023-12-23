@@ -58,10 +58,13 @@ def play_again():
         print("Invalid value, Try again")
         mu.invalid_aud()
         play_again()
-     
+    except KeyboardInterrupt:
+        input("""You have made and early exit, 
+              Press enter to continue: """)
 
 def game():
-    
+
+    system('cls')
     print(
         """
 #####################===GUESS==THE==NUMBER===###################
