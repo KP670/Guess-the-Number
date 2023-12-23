@@ -1,28 +1,35 @@
-from playsound import playsound
+# Hide Pygame support message
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+
+from pygame import mixer, time as pg_time
 import time
 
+mixer.init()
+
 sleeptime = 1
+path_prefix = './sounds/'
+
+def playsound(sound_file):
+    sfx = mixer.Sound(path_prefix + sound_file)
+    sfx.play()
+    pg_time.wait(int(sfx.get_length() * 1000))
 
 def startgame_aud():
-    playsound('./sounds/startgame.wav')
-    time.sleep(sleeptime)
+    playsound('startgame.wav')
 
 def endgame_aud():
-    playsound('./sounds/endgame.wav')
-    time.sleep(sleeptime)
+    playsound('endgame.wav')
 
 def win_aud():
-    playsound('./sounds/win.wav')
-    time.sleep(sleeptime)
+    playsound('win.wav')
 
 def incorrect_aud():
-    playsound('./sounds/incorrect.wav')
-    time.sleep(sleeptime)
+    playsound('incorrect.wav')
 
 def lose_aud():
-    playsound('./sounds/lose.wav')
-    time.sleep(sleeptime)
+    playsound('lose.wav')
 
 def invalid_aud():
-    playsound('./sounds/invalid.wav')
-    time.sleep(sleeptime)
+    playsound('invalid.wav')
+
